@@ -7,15 +7,25 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
 
 class QuestionController extends AbstractController
 {
     /**
      * @Route("/", name="app_homepage")
      */
-    public function homepage()
+    public function homepage(Environment $twigEnvironment)
     {
+        /*
+        $html = $twigEnvironment->render('question/homepage.html.twig');
+
+        return new Response($html);
+        */
+        // Las órdenes de arriba y la de abajo son equivalentes, la de arriba utiliza el servicio de twig directamente
+        // comando: php bin\console debug:autowiring twig -> muestra el nombre para llamar al servicio twig
+
         return $this->render('question/homepage.html.twig');
+
     }
 
     /**
